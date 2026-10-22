@@ -61,3 +61,7 @@ client/
 ## Tecnologías
 
 React, TypeScript, React Router, Vite y CSS. Los datos de Pokémon provienen de [PokéAPI](https://pokeapi.co/); los favoritos se almacenan localmente en el navegador.
+
+## Link frontend stage-frontend
+
+project-poke-api-app-stage-frontend.vercel.app
