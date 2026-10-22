@@ -1,0 +1,124 @@
+.card {
+  font-family: "Inter", Arial, sans-serif;
+  border-radius: 10px;
+  border: 2px solid black;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: radial-gradient(
+    circle at center,
+    rgb(160, 45, 20) 0%,
+    rgb(200, 55, 25) 30%,
+    rgb(239, 85, 43) 75%,
+    rgb(255, 155, 100) 100%,
+    transparent 100%
+  );
+  width: 175px;
+  height: 275px;
+}
+
+.card__image-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  transform: translate(-50%, -50%);
+}
+
+.card__image {
+  position: relative;
+  width: 150px;
+  height: auto;
+  z-index: 2;
+}
+
+.card__circle {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    #8f762e 0%,
+    #c5a33f 45%,
+    #f5d76e 70%,
+    #ffe9a3 90%,
+    transparent 100%
+  );
+  z-index: 0;
+}
+
+.card__pokemon-name {
+  color: #faf9f9;
+  z-index: 3;
+  position: absolute;
+  right: 0px;
+  margin: 0;
+  padding: 4px 10px;
+  max-width: calc(100% - 36px);
+  border-radius: 5px;
+  background: radial-gradient(
+    circle at center,
+    #c084fc 0%,
+    #9333ea 60%,
+    #6b21a8 100%
+  );
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: right;
+}
+
+.card__pokemon-type {
+  color: #faf9f9;
+  z-index: 3;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  margin: 0;
+  padding: 6px 8px;
+  border-radius: 5px;
+  background: radial-gradient(
+    circle at center,
+    #c084fc 0%,
+    #9333ea 60%,
+    #6b21a8 100%
+  );
+  font-size: 14px;
+  text-align: left;
+}
+
+.card__fav-button {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 150ms ease;
+}
+
+.card__fav-button:hover {
+  transform: scale(1.08);
+}
+
+.card__fav-button:focus-visible {
+  outline: 2px solid #6b21a8;
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+.card__pokeball-fav {
+  display: block;
+  width: 30px;
+  height: 30px;
+}
