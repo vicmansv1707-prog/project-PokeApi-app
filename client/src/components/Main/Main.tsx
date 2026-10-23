@@ -15,7 +15,7 @@ function Main(props: MainProps): React.JSX.Element {
         aria-label="Mostrar solo Pokémon favoritos o Todo"
         onClick={props.handleToggleFavorites}
       >
-        {!props.showFavoritesOnly ? 'Favoritos' : 'Todo'}
+        {!props.showFavoritesOnly ? "Favoritos" : "Todo"}
         <img
           className="content_favorites-icon"
           src={pokeball_color}
@@ -81,7 +81,8 @@ function Main(props: MainProps): React.JSX.Element {
         <p role="status">No se encontró Pokémon con ese nombre.</p>
       ) : props.showFavoritesOnly && visibleCards.length === 0 ? (
         <p role="status">
-          Todavía no tienes Pokémon favoritos. Marca la pokébola de una tarjeta para agregarla aquí.
+          Todavía no tienes Pokémon favoritos. Marca la pokébola de una tarjeta
+          para agregarla aquí.
         </p>
       ) : (
         <ul className="card__list">

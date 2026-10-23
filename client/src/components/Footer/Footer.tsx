@@ -1,5 +1,3 @@
-
-
 function Footer(): React.JSX.Element {
   return (
     <footer className="footer">
@@ -8,6 +6,6 @@ function Footer(): React.JSX.Element {
       </div>
     </footer>
   );
-};
+}
 
 export default Footer;

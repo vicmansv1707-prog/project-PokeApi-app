@@ -141,28 +141,22 @@ function App(): React.JSX.Element {
     if (pokemonIndex === null || !showFavoritesOnly) return;
 
     let isActive = true;
- 
-    const favoritePokemonResources =
-      pokemonIndex.filter((resource) => {
-        const id = Number(resource.url.split("/").filter(Boolean).pop());
-        const matchesSearch = resource.name
-            .toLocaleLowerCase()
-            .includes(searchTerm.trim().toLocaleLowerCase()
-        );
-        return favoritePokemonIds.includes(id) && matchesSearch         
-      });
 
-      api
-        .getCards(favoritePokemonResources)
-        .then((loadedCards) =>{
-          if (isActive) setCards(loadedCards);
-        })
-        .catch((err: unknown) => {
-        if (!isActive) {
-          return() => {
-            isActive = false;
-          };
-        }
+    const favoritePokemonResources = pokemonIndex.filter((resource) => {
+      const id = Number(resource.url.split("/").filter(Boolean).pop());
+      const matchesSearch = resource.name
+        .toLocaleLowerCase()
+        .includes(searchTerm.trim().toLocaleLowerCase());
+      return favoritePokemonIds.includes(id) && matchesSearch;
+    });
+
+    api
+      .getCards(favoritePokemonResources)
+      .then((loadedCards) => {
+        if (isActive) setCards(loadedCards);
+      })
+      .catch((err: unknown) => {
+        if (!isActive) return;
 
         setError(
           err instanceof Error
@@ -175,11 +169,13 @@ function App(): React.JSX.Element {
           setIsLoading(false);
         }
       });
-  },[pokemonIndex, favoritePokemonIds, searchTerm, showFavoritesOnly])
+    return () => {
+      isActive = false;
+    };
+  }, [pokemonIndex, favoritePokemonIds, searchTerm, showFavoritesOnly]);
 
   useEffect(() => {
     if (pokemonIndex === null || showFavoritesOnly) return;
-    
 
     let isActive = true;
 
@@ -224,28 +220,28 @@ function App(): React.JSX.Element {
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoritePokemonIds));
   }, [favoritePokemonIds]);
 
-  const homePage = ( 
-  <Main
-        cards={cardsWithFavorites}
-        isLoading={isLoading}
-        error={error}
-        searchTerm={searchTerm}
-        isFirstPage={isFirstPage}
-        isLastPage={isLastPage}
-        showFavoritesOnly={showFavoritesOnly}
-        handleCardFav={handleCardFav}
-        handleSearchTerm={handleSearchTerm}
-        handleNextPage={handleNextPage}
-        handlePreviousPage={handlePreviousPage}
-        handleJumpForward={handleJumpForward}
-        handleJumpBackward={handleJumpBackward}
-        handleToggleFavorites={handleToggleFavorites}
-      />
-    );
+  const homePage = (
+    <Main
+      cards={cardsWithFavorites}
+      isLoading={isLoading}
+      error={error}
+      searchTerm={searchTerm}
+      isFirstPage={isFirstPage}
+      isLastPage={isLastPage}
+      showFavoritesOnly={showFavoritesOnly}
+      handleCardFav={handleCardFav}
+      handleSearchTerm={handleSearchTerm}
+      handleNextPage={handleNextPage}
+      handlePreviousPage={handlePreviousPage}
+      handleJumpForward={handleJumpForward}
+      handleJumpBackward={handleJumpBackward}
+      handleToggleFavorites={handleToggleFavorites}
+    />
+  );
 
   return (
     <div className="page__content">
-      <Header/>
+      <Header />
       <Routes>
         <Route path="/" element={homePage} />
         <Route path="/about" element={<About />} />
