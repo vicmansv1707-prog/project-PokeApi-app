@@ -2,7 +2,7 @@
 export interface CardData {
   id: number;
   name: string;
-  image: string;
+  image: string | null;
   types: string[];
   isFav: boolean;
 }

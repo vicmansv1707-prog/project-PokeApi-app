@@ -64,4 +64,4 @@ React, TypeScript, React Router, Vite y CSS. Los datos de Pokémon provienen de 
 
 ## Link frontend stage-frontend
 
-project-poke-api-app-stage-frontend.vercel.app
+https://project-poke-api-app-stage-frontend.vercel.app

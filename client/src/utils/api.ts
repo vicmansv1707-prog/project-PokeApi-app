@@ -43,9 +43,6 @@ class Api {
                 pokemon.sprites.other?.["official-artwork"]?.front_default ??
                 pokemon.sprites.front_default;
 
-            if (!image) {
-                throw new Error(`No se encontró imagen para ${pokemon.name}`);
-            }
 
             return {
                 id: pokemon.id,

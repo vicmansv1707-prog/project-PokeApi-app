@@ -22,7 +22,7 @@ function Card(props: CardProps): React.JSX.Element {
                     <div className="card__circle" />
                     <img 
                     className="card__image" 
-                    src={props.card.image} 
+                    src={props.card.image ?? pokeball_bw} 
                     alt="Imagen del pokémon"/>
                 </div>            
             <h2 className="card__pokemon-type">{props.card.types.join(", ")}</h2>
