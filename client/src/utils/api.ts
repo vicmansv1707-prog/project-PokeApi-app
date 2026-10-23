@@ -7,6 +7,7 @@ import type {
 } from "../types/types";
 
 export const BASE_URL = `https://pokeapi.co/api/v2/pokemon`;
+const cardCache = new Map<number, CardData>();
 
 class Api {
   private apiData: ApiData;
@@ -38,30 +39,35 @@ class Api {
   }
 
   async getCards(pokemonResources: PokemonResource[]): Promise<CardData[]> {
-    const pokemonDetails = await Promise.all(
+    return Promise.all(
       pokemonResources.map(async ({ url }) => {
+        const id = Number(url.split("/").filter(Boolean).pop());
+        const cachedCard = cardCache.get(id);
+
+        if (cachedCard) return cachedCard;
+
         const res = await fetch(url, {
           headers: this.apiData.headers,
         });
-        return this.handleResult<PokemonDetailsResponse>(res);
+        const pokemon = await this.handleResult<PokemonDetailsResponse>(res);
+
+        const image =
+          pokemon.sprites.other?.["official-artwork"]?.front_default ??
+          pokemon.sprites.front_default;
+
+        const card: CardData = {
+          id: pokemon.id,
+          name: pokemon.name,
+          image,
+          types: pokemon.types.map((item) => item.type.name),
+          isFav: false,
+        };
+
+        cardCache.set(card.id, card);
+        return card;
       }),
     );
-
-    return pokemonDetails.map((pokemon): CardData => {
-      const image =
-        pokemon.sprites.other?.["official-artwork"]?.front_default ??
-        pokemon.sprites.front_default;
-
-      return {
-        id: pokemon.id,
-        name: pokemon.name,
-        image,
-        types: pokemon.types.map((item) => item.type.name),
-        isFav: false,
-      };
-    });
   }
-
   async getPokemonIndex(): Promise<PokemonResource[]> {
     const firstPage = await this.getPokemonList(1, 0);
     const completeList = await this.getPokemonList(firstPage.count, 0);

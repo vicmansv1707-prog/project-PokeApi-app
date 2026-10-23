@@ -37,6 +37,7 @@ function App(): React.JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
   const [offset, setOffset] = useState(0);
   const [pokemonIndex, setPokemonIndex] = useState<PokemonResource[] | null>(
     null,
@@ -49,7 +50,7 @@ function App(): React.JSX.Element {
     pokemonIndex?.filter((pokemon) =>
       pokemon.name
         .toLocaleLowerCase()
-        .includes(searchTerm.trim().toLocaleLowerCase()),
+        .includes(debouncedSearchTerm.trim().toLocaleLowerCase()),
     ).length ?? 0;
 
   const isFirstPage = offset === 0;
@@ -138,7 +139,12 @@ function App(): React.JSX.Element {
   }, []);
 
   useEffect(() => {
-    if (pokemonIndex === null || !showFavoritesOnly) return;
+    if (
+      pokemonIndex === null ||
+      !showFavoritesOnly ||
+      searchTerm !== debouncedSearchTerm
+    )
+      return;
 
     let isActive = true;
 
@@ -146,7 +152,7 @@ function App(): React.JSX.Element {
       const id = Number(resource.url.split("/").filter(Boolean).pop());
       const matchesSearch = resource.name
         .toLocaleLowerCase()
-        .includes(searchTerm.trim().toLocaleLowerCase());
+        .includes(debouncedSearchTerm.trim().toLocaleLowerCase());
       return favoritePokemonIds.includes(id) && matchesSearch;
     });
 
@@ -172,14 +178,25 @@ function App(): React.JSX.Element {
     return () => {
       isActive = false;
     };
-  }, [pokemonIndex, favoritePokemonIds, searchTerm, showFavoritesOnly]);
+  }, [
+    pokemonIndex,
+    favoritePokemonIds,
+    debouncedSearchTerm,
+    showFavoritesOnly,
+    searchTerm,
+  ]);
 
   useEffect(() => {
-    if (pokemonIndex === null || showFavoritesOnly) return;
+    if (
+      pokemonIndex === null ||
+      showFavoritesOnly ||
+      searchTerm !== debouncedSearchTerm
+    )
+      return;
 
     let isActive = true;
 
-    const normalizedSearchTerm = searchTerm.trim().toLocaleLowerCase();
+    const normalizedSearchTerm = debouncedSearchTerm.trim().toLocaleLowerCase();
 
     const filteredPokemon = pokemonIndex.filter((pokemon) =>
       pokemon.name.toLocaleLowerCase().includes(normalizedSearchTerm),
@@ -214,11 +231,27 @@ function App(): React.JSX.Element {
     return () => {
       isActive = false;
     };
-  }, [offset, searchTerm, pokemonIndex, showFavoritesOnly]);
+  }, [
+    offset,
+    debouncedSearchTerm,
+    pokemonIndex,
+    showFavoritesOnly,
+    searchTerm,
+  ]);
 
   useEffect(() => {
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoritePokemonIds));
   }, [favoritePokemonIds]);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 300);
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [searchTerm]);
 
   const homePage = (
     <Main
