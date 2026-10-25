@@ -1,4 +1,3 @@
-import express from "../../images/express.png";
 import html from "../../images/html_image.png";
 import js from "../../images/js_image.png";
 import ts from "../../images/typescript.png";
