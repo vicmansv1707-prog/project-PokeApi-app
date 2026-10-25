@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 400;
+  src: url("./fonts/Nunito-Italic-VariableFont_wght.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/Nunito-VariableFont_wght.woff2") format("woff2");
+}
