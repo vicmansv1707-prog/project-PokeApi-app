@@ -3,7 +3,7 @@ import pokeball_color from "../../../images/pokeball_color.svg";
 import type { CardProps } from "../../../types/types";
 
 function Card(props: CardProps): React.JSX.Element {
-  const cardFavButton = props.card.isFav ? pokeball_color : pokeball_bw;
+  const cardFavButton = props.isFav ? pokeball_color : pokeball_bw;
 
   return (
     <li className="card">
@@ -12,7 +12,7 @@ function Card(props: CardProps): React.JSX.Element {
         className="card__fav-button"
         type="button"
         aria-label={`Marcar ${props.card.name} como favorito`}
-        aria-pressed={props.card.isFav}
+        aria-pressed={props.isFav}
         onClick={() => props.handleCardFav(props.card)}
       >
         <img className="card__pokeball-fav" src={cardFavButton} alt=""></img>

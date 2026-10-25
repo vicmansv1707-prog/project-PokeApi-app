@@ -4,7 +4,7 @@ import pokeball_color from "../../images/pokeball_color.svg";
 
 function Main(props: MainProps): React.JSX.Element {
   const visibleCards = props.showFavoritesOnly
-    ? props.cards.filter((card) => card.isFav)
+    ? props.cards.filter((card) => props.favoritePokemonIds.includes(card.id))
     : props.cards;
 
   return (
@@ -93,6 +93,7 @@ function Main(props: MainProps): React.JSX.Element {
             <Card
               key={card.id}
               card={card}
+              isFav={props.favoritePokemonIds.includes(card.id)}
               handleCardFav={props.handleCardFav}
             />
           ))}

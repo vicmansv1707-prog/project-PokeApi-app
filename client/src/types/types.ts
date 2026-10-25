@@ -4,17 +4,18 @@ export interface CardData {
   name: string;
   image: string | null;
   types: string[];
-  isFav: boolean;
 }
 
 export type CardProps = {
   card: CardData;
+  isFav: boolean;
   handleCardFav: (card: CardData) => void;
 };
 
 export type MainProps = {
   cards: CardData[];
   isLoading: boolean;
+  favoritePokemonIds: number[];
   error: string | null;
   searchTerm: string;
   isFirstPage: boolean;

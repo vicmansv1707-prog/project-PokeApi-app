@@ -60,7 +60,6 @@ class Api {
           name: pokemon.name,
           image,
           types: pokemon.types.map((item) => item.type.name),
-          isFav: false,
         };
 
         cardCache.set(card.id, card);
