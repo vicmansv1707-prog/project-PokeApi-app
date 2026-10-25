@@ -42,7 +42,7 @@
   text-align: justify;
 }
 
-.about__texts-cointainer {
+.about__texts-container {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(16px, 3vw, 32px);
@@ -75,7 +75,7 @@
     line-height: 1.5;
   }
 
-  .about__texts-cointainer {
+  .about__texts-container {
     grid-template-columns: 1fr;
     gap: 12px;
   }

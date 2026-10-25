@@ -9,6 +9,9 @@ function Main(props: MainProps): React.JSX.Element {
 
   return (
     <main className="content">
+      <h1 className="content__title" aria-hidden="true">
+        Pokédex
+      </h1>
       <button
         className="content__button-favorites"
         type="button"
@@ -19,7 +22,7 @@ function Main(props: MainProps): React.JSX.Element {
         <img
           className="content_favorites-icon"
           src={pokeball_color}
-          alt="Icono pokébola"
+          alt=""
           aria-hidden="true"
         />
       </button>

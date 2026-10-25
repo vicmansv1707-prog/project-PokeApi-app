@@ -13,78 +13,70 @@ function About(): React.JSX.Element {
       <p className="about__info">
         Proyecto final del bootcamp Desarrollador Web impartido en la plataforma
         © TripleTen, desarrollado por mi Víctor Sánchez. En este proyecto se
-        utilizaron herramientas de desarrollo comenzando con HTML, JavaScrip,
-        TypeScript y CSS. También herramientas actuales como Reat - Vite que nos
-        permiten crear aplicaciones modernas y de manera rápida en la parte de
-        frontend. Además de Express.js para entornos de trabajo del lado del
-        backend. Aplicando lo aprendido sobre todas estas para lograr mostrar
-        esta aplicación que sea amigable para quién interactue con ella.
+        utilizaron herramientas de desarrollo comenzando con HTML, JavaScript,
+        TypeScript y CSS. También herramientas actuales como React + Vite que
+        nos permiten crear aplicaciones modernas y de manera rápida en la parte
+        de frontend. Además se usará en la próxima etapa Express.js para
+        entornos de trabajo del lado del backend. Aplicando lo aprendido sobre
+        todas estas para lograr mostrar esta aplicación que sea amigable para
+        quién interactúe con ella.
       </p>
       <p className="about__info">
-        Es un página que consume la API sobre Pokémon (PokeAPI) la cual da datos
-        sobre cada pokémon, en este caso utilizando su id, nombre, la imagen y
-        el tipo o tipos de cada uno. Mostrando por bloques de 20, con la
-        capacidad de recorrer todos, bucando alguno en específico y con la
-        opición de agregar favoritos. Y donde puedes ver tus favoritos
+        Es una página que consume la API sobre Pokémon (PokeAPI) la cual da
+        datos sobre cada pokémon, en este caso utilizando su id, nombre, la
+        imagen y el tipo o tipos de cada uno. Mostrando por bloques de 20, con
+        la capacidad de recorrer todos, buscando alguno en específico y con la
+        opción de agregar favoritos. Y donde puedes ver tus favoritos
         presionando el botón con ese nombre.
       </p>
-      <div className="about__texts-cointainer">
+      <div className="about__texts-container">
         <p className="about__text">
           <img className="about__image-icon" src={html} alt="HTML icon" />
-          HTML (Lenguaje de Marcado de Hipertexto) es el código estándar para
-          crear y estructurar páginas web. Usa etiquetas para organizar textos,
-          imágenes, enlaces y tablas, y funciona como el esqueleto del sitio, el
-          cual se complementa con CSS para el diseño y JavaScript para la
-          interactividad.
+          HTML en este proyecto al utilizar react funciona como "lienzo",
+          conectado mediante {"<script></script>"} para dibujar el diseño que se
+          le dio a la aplicación.
         </p>
         <p className="about__text">
           <img className="about__image-icon" src={js} alt="Javascript icon" />
-          JavaScript (conocido comúnmente como JS) es un lenguaje de
-          programación interpretado, ligero y de alto nivel que se utiliza
-          principalmente para dar interactividad, dinamismo y lógica a las
-          páginas web. Junto con HTML (estructura) y CSS (diseño visual), es una
-          de las tres tecnologías principales de la World Wide Web.
+          JavaScript es la base que se utilizó para darle las funcionalidades y
+          la interacción necesaria a la aplicación, para poder obtener y mostrar
+          las tarjetas y demás recursos de esta, pero como dije es la base, no
+          se utilizó directame JS.
         </p>
         <p className="about__text">
           <img className="about__image-icon" src={ts} alt="Typescript icon" />
-          TypeScript es un lenguaje de programación de tipado estricto basado en
-          JavaScript. Los desarrolladores le han agregado características
-          adicionales, como tipado estático, clases y módulos, para crear
-          programas más confiables y mantenibles. TypeScript permite detectar
-          errores en tiempo de desarrollo, facilita el trabajo en equipo y
-          mejora la productividad en proyectos grandes. Se compila a JavaScript
-          estándar, por lo que el código escrito en TypeScript puede ejecutarse
-          en cualquier navegador moderno o entorno que admita JavaScript.
+          TypeScript es una "extensión" de JS la cuál permite ir estructurando
+          las clases y funciones respecto a lo que necesitamos, dando la forma
+          de los objetos, principalmente las tarjetas, lo cual permitió tener
+          control sobre lo que se obtuvo de API (id, nombre, imagen, tipo), esto
+          gracias a su sistema de tipado que permite detectar errores en tiempo
+          real y permitiendo corregirlos, para facilitar la implentación y
+          corregir lo errores que se presantaron.
         </p>
         <p className="about__text">
           <img className="about__image-icon" src={css} alt="css icon" />
-          CSS (Cascading Style Sheets) es un estándar que define cómo se
-          presentan los datos en el navegador. El objetivo principal del
-          desarrollo de CSS es separar el contenido, ya sea escrito en HTML u
-          otro lenguaje de marcado, del diseño de un documento. Esta separación
-          puede aumentar la accesibilidad de los documentos, proporcionar mayor
-          flexibilidad y control sobre su presentación, así como reducir la
-          complejidad y la repetición de los contenidos estructurados.
+          CSS es la herramienta utilizada para dar estilo a la página y sus
+          componentes, utilizando para ello las clases asignadas en los
+          componenetes correspondientes, lo cual permitio darle forma a la
+          página completa, cada sección, tarjetas y botones. Agrupandolos, dando
+          el espacio adecuado y también permitiendo ajustar a diferentes
+          resoluciones de pantalla para difetentes dispositivos.
         </p>
         <p className="about__text">
           <img className="about__image-icon" src={react} alt="react icon" />
-          React (o React.js) es una biblioteca de JavaScript de código abierto
-          creada por Meta (Facebook) para construir interfaces de usuario (UI)
-          en el frontend. Se usa para desarrollar aplicaciones web dinámicas y
-          de una sola página (SPA) de forma rápida y modular.
+          React es la base con la se trabajó para crear la aplicación. Aquí es
+          donde se construyó cada componente y con la que maquetó la estructura
+          de la aplicación, ya que al "combinar" HTML y JS/TS permite crear los
+          diferentes elementos que se muestran de la página asignado las clases,
+          y teniendo un comportamiento dinámico que le perminte también mostrar
+          propiedes de cada componente dependiendo de la interacción del
+          usuario.
         </p>
         <p className="about__text">
           <img className="about__image-icon" src={vite} alt="vite icon" />
-          Vite es una herramienta de compilación y servidor de desarrollo para
-          frontend diseñada para acelerar la creación de aplicaciones web
-          modernas. Creado por Evan You (también autor de Vue.js), su nombre
-          significa "rápido" en francés.
-        </p>
-        <p className="about__text">
-          <img className="about__image-icon" src={express} alt="Express icon" />
-          Express (o simplemente Express) es un entorno de trabajo (framework)
-          de código abierto para Node.js, diseñado para crear aplicaciones web y
-          APIs del lado del servidor de forma rápida y sencilla.
+          Vite es la herramienta que aligual que React se usa en frontend, pero
+          su función es la que permite mediante módulos ES, arrancar de manera
+          más rápida y se encarga de empaquetar el código para producción.
         </p>
       </div>
     </>

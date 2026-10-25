@@ -7,28 +7,25 @@ function Card(props: CardProps): React.JSX.Element {
 
   return (
     <li className="card">
-      <h2 className="card__pokemon-name">{props.card.name}</h2>
+      <h3 className="card__pokemon-name">{props.card.name}</h3>
       <button
         className="card__fav-button"
         type="button"
-        aria-label="Cambiar favorito"
+        aria-label={`Marcar ${props.card.name} como favorito`}
+        aria-pressed={props.card.isFav}
         onClick={() => props.handleCardFav(props.card)}
       >
-        <img
-          className="card__pokeball-fav"
-          src={cardFavButton}
-          alt="Icono pokémon favorito"
-        ></img>
+        <img className="card__pokeball-fav" src={cardFavButton} alt=""></img>
       </button>
       <div className="card__image-container">
         <div className="card__circle" />
         <img
           className="card__image"
           src={props.card.image ?? pokeball_bw}
-          alt="Imagen del pokémon"
+          alt={`Imagen de ${props.card.name}`}
         />
       </div>
-      <h2 className="card__pokemon-type">{props.card.types.join(", ")}</h2>
+      <p className="card__pokemon-type">{props.card.types.join(", ")}</p>
     </li>
   );
 }

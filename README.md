@@ -62,6 +62,6 @@ client/
 
 React, TypeScript, React Router, Vite y CSS. Los datos de Pokémon provienen de [PokéAPI](https://pokeapi.co/); los favoritos se almacenan localmente en el navegador.
 
-## Link frontend stage-frontend
+## Demo en línea
 
-https://project-poke-api-app-stage-frontend-git-stage-frontend-vmsv.vercel.app
+Versión publicada de frontend: https://project-poke-api-app-stage-frontend-git-stage-frontend-vmsv.vercel.app
