@@ -228,7 +228,11 @@ export function usePokemonCatalog() {
   ]);
 
   useEffect(() => {
-    localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoritePokemonIds));
+    try {
+      localStorage.setItem(FAVORITES_KEY, JSON.stringify(favoritePokemonIds));
+    } catch {
+      // Sin almacenamiento disponible, los favoritos duran solo esta sesión.
+    }
   }, [favoritePokemonIds]);
 
   useEffect(() => {

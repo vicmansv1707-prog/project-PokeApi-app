@@ -3,19 +3,17 @@ import type { MainProps } from "../../types/types";
 import pokeball_color from "../../images/pokeball_color.svg";
 
 function Main(props: MainProps): React.JSX.Element {
+  // Filtra de inmediato al desmarcar; el hook actualizará después la lista de favoritos.
   const visibleCards = props.showFavoritesOnly
     ? props.cards.filter((card) => props.favoritePokemonIds.includes(card.id))
     : props.cards;
 
   return (
     <main className="content">
-      <h1 className="content__title" aria-hidden="true">
-        Pokédex
-      </h1>
+      <h1 className="content__title">Pokédex</h1>
       <button
         className="content__button-favorites"
         type="button"
-        aria-label="Mostrar solo Pokémon favoritos o Todo"
         onClick={props.handleToggleFavorites}
       >
         {!props.showFavoritesOnly ? "Favoritos" : "Todo"}

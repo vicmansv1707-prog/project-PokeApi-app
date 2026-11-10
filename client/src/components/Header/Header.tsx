@@ -7,16 +7,14 @@ function Header(): React.JSX.Element {
   const path = location.pathname === "/" ? "/about" : "/";
 
   return (
-    <>
-      <header className="header">
-        <img className="header__logo" src={logo} alt="Pokémon logo" />
-        <div className="header__navs">
-          <nav className="header__nav">
-            <NavLink to={path}>{textLink}</NavLink>
-          </nav>
-        </div>
-      </header>
-    </>
+    <header className="header">
+      <img className="header__logo" src={logo} alt="Pokémon logo" />
+      <div className="header__navs">
+        <nav className="header__nav">
+          <NavLink to={path}>{textLink}</NavLink>
+        </nav>
+      </div>
+    </header>
   );
 }
 
